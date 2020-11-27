@@ -5,14 +5,6 @@ from email.parser import HeaderParser
 from time import sleep
 from dateutil import parser
 
-def menu():
-    print(''' Tarea 5 Pablo Muñoz Poblete
-            1-Importar Regex.
-            2-Conseguir Message-ID.
-            3-Validar correos.
-            4- Salir
-        ''')
-
 def import_regex(regex_file):
     try:
         regex_list=[]
@@ -36,8 +28,6 @@ def connect_mail(user,pwd):
     except Exception as e:
         print('Error: ', e)
     
-
-
 
 if __name__ == "__main__":
     try:
@@ -64,7 +54,7 @@ if __name__ == "__main__":
                         print('Comprobando el mensaje',id,'con la regex',regex[1],'y la expresion',msg_content['Message-ID'][1:-1],'...')
                         match=re.match(regex[1],msg_content['Message-ID'][1:-1])
                         if match:#el mensaje es autentico
-                        print('El correo es autentico')
+                            print('El correo es autentico')
                         else:
                             mail_date=parser.parse(msg_content['Date']).date()
                             if regex_date > mail_date:
